@@ -7,12 +7,12 @@ import { cn } from '@/lib/utils';
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 const APP_NAME = 'LinkForge';
-const APP_DESCRIPTION = 'A powerful and easy-to-use URL shortener with advanced analytics, custom aliases, and robust security features.';
+const APP_DESCRIPTION = 'Shorten long links fast with our secure URL shortener. Track clicks, generate QR codes, and manage URLs easily. 100% free.';
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
   title: {
-    default: `${APP_NAME} - Shorten, Share, and Track Your Links`,
+    default: `Best URL Shortener Tool | Create Custom Short URLs Fast`,
     template: `%s | ${APP_NAME}`,
   },
   description: APP_DESCRIPTION,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: APP_NAME,
     title: {
-      default: APP_NAME,
+      default: 'Best URL Shortener Tool | Create Custom Short URLs Fast',
       template: `%s | ${APP_NAME}`,
     },
     description: APP_DESCRIPTION,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: {
-      default: APP_NAME,
+      default: 'Best URL Shortener Tool | Create Custom Short URLs Fast',
       template: `%s | ${APP_NAME}`,
     },
     description: APP_DESCRIPTION,
