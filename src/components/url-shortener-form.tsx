@@ -27,6 +27,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
+import { QRCodeSVG } from 'qrcode.react';
 
 const formSchema = z.object({
   url: z.string().url({ message: 'Please enter a valid URL.' }),
@@ -64,8 +65,12 @@ export function UrlShortenerForm() {
 
   const onCopy = () => {
     if (state?.shortUrl) {
-      navigator.clipboard.writeText(state.shortUrl);
+      navigator.clipboard.writeText(`http://${state.shortUrl}`);
       setCopied(true);
+      toast({
+          title: 'Copied to clipboard!',
+          description: `http://${state.shortUrl}`,
+      });
       setTimeout(() => setCopied(false), 2000);
     }
   };
@@ -162,22 +167,29 @@ export function UrlShortenerForm() {
       {state?.shortUrl && (
         <Alert className="bg-primary/10">
           <AlertTitle>Success! Here is your short link:</AlertTitle>
-          <AlertDescription className="flex items-center justify-between">
-            <a
-              href={`http://${state.shortUrl}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-primary hover:underline"
-            >
-              {state.shortUrl}
-            </a>
-            <Button variant="ghost" size="icon" onClick={onCopy}>
-              {copied ? (
-                <ClipboardCheck className="h-4 w-4" />
-              ) : (
-                <Clipboard className="h-4 w-4" />
-              )}
-            </Button>
+          <AlertDescription className="flex items-start justify-between gap-4">
+            <div className="flex-grow space-y-2">
+                <div className="flex items-center justify-between">
+                    <a
+                    href={`http://${state.shortUrl}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-primary hover:underline"
+                    >
+                    {state.shortUrl}
+                    </a>
+                    <Button variant="ghost" size="icon" onClick={onCopy}>
+                    {copied ? (
+                        <ClipboardCheck className="h-4 w-4" />
+                    ) : (
+                        <Clipboard className="h-4 w-4" />
+                    )}
+                    </Button>
+                </div>
+            </div>
+            <div className="rounded-lg bg-white p-2">
+                <QRCodeSVG value={`http://${state.shortUrl}`} size={80} />
+            </div>
           </AlertDescription>
         </Alert>
       )}
