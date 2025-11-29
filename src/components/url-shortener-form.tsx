@@ -4,7 +4,7 @@ import { useActionState, useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { shortenUrl } from '@/lib/actions';
+import { shortenUrl, type ShortenUrlState } from '@/lib/actions';
 import {
   Form,
   FormControl,
@@ -21,7 +21,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
-import { CalendarIcon, Clipboard, ClipboardCheck } from 'lucide-react';
+import { CalendarIcon, Clipboard, ClipboardCheck, QrCode } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import { useToast } from '@/hooks/use-toast';
@@ -34,6 +34,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { useUrlStore } from '@/lib/store';
+import Link from 'next/link';
 
 const formSchema = z.object({
   url: z.string().url({ message: 'Please enter a valid URL.' }),
@@ -43,8 +45,12 @@ const formSchema = z.object({
 
 export function UrlShortenerForm() {
   const [copied, setCopied] = useState(false);
-  const initialState = { message: null, error: null, shortUrl: null };
+  const addLink = useUrlStore((state) => state.addLink);
+  const links = useUrlStore((state) => state.links);
+
+  const initialState: ShortenUrlState = {};
   const [state, formAction] = useActionState(shortenUrl, initialState);
+  
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -56,37 +62,51 @@ export function UrlShortenerForm() {
     },
   });
 
+  const handleFormAction = (payload: FormData) => {
+    const alias = payload.get('alias') as string;
+    if (alias && links.some(link => link.id === alias)) {
+        form.setError('alias', { type: 'manual', message: 'This custom alias is already taken.' });
+        return;
+    }
+    formAction(payload);
+  }
+
   useEffect(() => {
-    if (state?.message) {
+    if (state?.message && state.link) {
+      addLink(state.link);
       toast({
-        variant: state.error ? 'destructive' : 'default',
-        title: state.error ? 'Error' : 'Success',
+        title: 'Success',
         description: state.message,
       });
+       form.reset();
+    } else if (state?.error) {
+        // Handle server-side validation errors if any
+        if(state.error.url) form.setError('url', { message: state.error.url[0] });
+        if(state.error.alias) form.setError('alias', { message: state.error.alias[0] });
     }
-    if (state?.shortUrl) {
-      form.reset();
-    }
-  }, [state, toast, form]);
+  }, [state, toast, form, addLink]);
 
   const onCopy = () => {
-    if (state?.shortUrl) {
-      navigator.clipboard.writeText(`http://${state.shortUrl}`);
+    if (state?.link?.shortUrl) {
+      const fullUrl = `${window.location.origin}${state.link.shortUrl}`;
+      navigator.clipboard.writeText(fullUrl);
       setCopied(true);
       toast({
           title: 'Copied to clipboard!',
-          description: `http://${state.shortUrl}`,
+          description: fullUrl,
       });
       setTimeout(() => setCopied(false), 2000);
     }
   };
+  
+  const shortUrl = state?.link?.shortUrl ? `${window.location.origin}${state.link.shortUrl}` : '';
 
   return (
     <div className="space-y-4">
       <Form {...form}>
         <form
           ref={formRef}
-          action={formAction}
+          action={handleFormAction}
           className="space-y-4 rounded-lg border bg-card p-6 shadow-sm"
         >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -115,7 +135,7 @@ export function UrlShortenerForm() {
                   <FormControl>
                     <Input placeholder="my-awesome-link" {...field} />
                   </FormControl>
-                   <FormMessage>{state?.error?.alias}</FormMessage>
+                   <FormMessage />
                 </FormItem>
               )}
             />
@@ -125,7 +145,7 @@ export function UrlShortenerForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Expiration Date (Optional)</FormLabel>
-                  <Popover>
+                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
@@ -160,30 +180,24 @@ export function UrlShortenerForm() {
             />
           </div>
           <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? 'Shortening...' : 'Short Link'}
+            {form.formState.isSubmitting ? 'Shortening...' : 'Shorten Link'}
           </Button>
-          {state?.error && !state.error.alias && (
-             <FormMessage>{Object.values(state.error).join(', ')}</FormMessage>
-          )}
-          {state?.message && state.error && (
-            <FormMessage>{state.message}</FormMessage>
-          )}
         </form>
       </Form>
-      {state?.shortUrl && (
+      {state?.link && (
         <Alert className="bg-primary/10">
           <AlertTitle>Success! Here is your short link:</AlertTitle>
-          <AlertDescription className="flex items-start justify-between gap-4">
+          <AlertDescription className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex-grow space-y-2">
                 <div className="flex items-center justify-between">
-                    <a
-                    href={`http://${state.shortUrl}`}
+                    <Link
+                    href={state.link.shortUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-mono text-primary hover:underline"
                     >
-                    {state.shortUrl}
-                    </a>
+                    {shortUrl}
+                    </Link>
                     <Button variant="ghost" size="icon" onClick={onCopy}>
                     {copied ? (
                         <ClipboardCheck className="h-4 w-4" />
@@ -196,16 +210,16 @@ export function UrlShortenerForm() {
             <Dialog>
               <DialogTrigger asChild>
                 <div className="cursor-pointer rounded-lg bg-white p-2">
-                  <QRCodeSVG value={`http://${state.shortUrl}`} size={80} />
+                  <QRCodeSVG value={shortUrl} size={80} />
                 </div>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                  <DialogTitle>QR Code for {state.shortUrl}</DialogTitle>
+                  <DialogTitle>QR Code for {shortUrl}</DialogTitle>
                 </DialogHeader>
                 <div className="mt-4 flex items-center justify-center">
                   <div className="rounded-lg bg-white p-4">
-                    <QRCodeSVG value={`http://${state.shortUrl}`} size={256} />
+                    <QRCodeSVG value={shortUrl} size={256} />
                   </div>
                 </div>
               </DialogContent>
