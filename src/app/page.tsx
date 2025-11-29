@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, FileText, Image, MoreHorizontal } from 'lucide-react';
 
 const faqItems = {
   "General FAQ": [
@@ -210,6 +210,46 @@ export default function Home() {
                  </div>
               ))}
             </Accordion>
+          </div>
+        </section>
+
+        <section id="related-tools" className="container space-y-12 bg-slate-50/50 py-8 dark:bg-slate-800/20 md:py-12 lg:py-24">
+          <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+            <h2 className="font-headline text-3xl font-bold leading-[1.1] sm:text-3xl md:text-4xl">
+              Related Tools
+            </h2>
+            <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+              To improve productivity, try our other free tools:
+            </p>
+          </div>
+          <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+            <Link href="#" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
+                <FileText className="mx-auto h-12 w-12 text-primary" />
+                <h3 className="font-bold">PDF Splitter</h3>
+                <p className="text-sm text-muted-foreground">
+                  Split your PDF files into multiple documents.
+                </p>
+              </div>
+            </Link>
+            <Link href="#" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
+                <Image className="mx-auto h-12 w-12 text-primary" />
+                <h3 className="font-bold">Image Compressor</h3>
+                <p className="text-sm text-muted-foreground">
+                  Reduce image file sizes for free.
+                </p>
+              </div>
+            </Link>
+            <Link href="#" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
+                <MoreHorizontal className="mx-auto h-12 w-12 text-primary" />
+                <h3 className="font-bold">More PDF Tools</h3>
+                <p className="text-sm text-muted-foreground">
+                  Explore our full suite of online tools.
+                </p>
+              </div>
+            </Link>
           </div>
         </section>
 
