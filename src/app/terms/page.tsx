@@ -16,36 +16,73 @@ export default function TermsOfUsePage() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6 text-muted-foreground">
+          <p>Last updated: 30 November 2025</p>
+          <p>
+            By using TinyURL by All2ools (the “Service”), you agree to the following terms.
+          </p>
+          
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-foreground">1. Acceptance of Terms</h3>
+            <h3 className="text-xl font-semibold text-foreground">1. Use of Service</h3>
             <p>
-              By accessing and using TinyUrl (the "Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this Service.
+              You agree to use the service responsibly and legally. You must NOT use the service to:
             </p>
+            <ul className="list-disc list-inside space-y-1">
+                <li>Spread harmful or illegal content</li>
+                <li>Create phishing or scam links</li>
+                <li>Distribute malware, viruses, or spam</li>
+                <li>Mislead or harm others</li>
+            </ul>
+            <p>We reserve the right to block abusive use.</p>
           </div>
+
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-foreground">2. Description of Service</h3>
-            <p>
-              Our Service provides a URL shortening utility that allows users to create shortened, trackable links. You understand and agree that the Service is provided "as-is" and that we assume no responsibility for the timeliness, deletion, or failure to store any user communications or personalization settings.
-            </p>
+            <h3 className="text-xl font-semibold text-foreground">2. Intellectual Property</h3>
+            <p>All2ools owns the:</p>
+             <ul className="list-disc list-inside space-y-1">
+                <li>Tool design</li>
+                <li>Code</li>
+                <li>Logos</li>
+                <li>Brand</li>
+                <li>UI/UX</li>
+            </ul>
+            <p>You retain full ownership of the URLs you shorten.</p>
           </div>
+
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-foreground">3. Prohibited Conduct</h3>
-            <p>
-              You agree not to use the Service to create short links for any illegal or unauthorized purpose, including but not limited to spam, phishing, malware distribution, or content that is abusive, fraudulent, or obscene. We reserve the right to deactivate any link suspected of malicious activity without notice.
-            </p>
+            <h3 className="text-xl font-semibold text-foreground">3. Disclaimer</h3>
+            <p>The service is provided “as is” without warranties. We do not guarantee:</p>
+            <ul className="list-disc list-inside space-y-1">
+                <li>Link uptime</li>
+                <li>Accuracy</li>
+                <li>Performance</li>
+                <li>Stability</li>
+            </ul>
+            <p>You use the service at your own risk.</p>
           </div>
+
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-foreground">4. Disclaimer of Warranties</h3>
-            <p>
-              The Service is provided on an "as is" and "as available" basis. We expressly disclaim all warranties of any kind, whether express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
-            </p>
+            <h3 className="text-xl font-semibold text-foreground">4. Limitation of Liability</h3>
+            <p>All2ools is not liable for:</p>
+            <ul className="list-disc list-inside space-y-1">
+                <li>Loss of data</li>
+                <li>Misuse of shortened links</li>
+                <li>Damages caused by third-party websites</li>
+                <li>Any indirect or consequential damages</li>
+            </ul>
+            <p>Your only remedy is to stop using the service.</p>
           </div>
+
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-foreground">5. Limitation of Liability</h3>
+            <h3 className="text-xl font-semibold text-foreground">5. Changes</h3>
+            <p>We may modify these Terms anytime. Your continued use implies acceptance.</p>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="text-xl font-semibold text-foreground">6. Contact</h3>
+            <p>For questions, contact:</p>
             <p>
-              You expressly understand and agree that TinyUrl shall not be liable for any direct, indirect, incidental, special, consequential, or exemplary damages resulting from the use or the inability to use the service.
+              📧 <a href="mailto:support@all2ools.com" className="text-primary hover:underline">support@all2ools.com</a>
             </p>
-            <p>Last updated: July 22, 2024</p>
           </div>
         </CardContent>
       </Card>
