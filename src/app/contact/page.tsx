@@ -1,9 +1,5 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 
 export const metadata = {
     title: 'Contact Us',
@@ -17,25 +13,45 @@ export default function ContactPage() {
             <CardHeader>
                 <CardTitle className="text-3xl font-bold tracking-tight">Contact Us</CardTitle>
                 <CardDescription>
-                    Have a question or feedback? Fill out the form below to get in touch with our team.
+                    Have questions or feedback? We’re here to help!
                 </CardDescription>
             </CardHeader>
-            <CardContent>
-                <form className="space-y-6">
-                    <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
-                        <Input id="name" placeholder="Enter your name" />
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" placeholder="Enter your email" />
-                    </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="message">Message</Label>
-                        <Textarea id="message" placeholder="Enter your message" className="min-h-[150px]" />
-                    </div>
-                    <Button type="submit" className="w-full">Send Message</Button>
-                </form>
+            <CardContent className="space-y-6 text-muted-foreground">
+                <div className="space-y-2">
+                    <h3 className="text-xl font-semibold text-foreground">📧 Email Support</h3>
+                    <p>
+                        You can reach us anytime at:
+                        <a href="mailto:support@all2ools.com" className="ml-1 text-primary hover:underline">
+                            support@all2ools.com
+                        </a>
+                    </p>
+                    <p>
+                        We usually respond within 24–48 hours.
+                    </p>
+                </div>
+
+                <div className="space-y-2">
+                    <h3 className="text-xl font-semibold text-foreground">🛠 How We Can Help</h3>
+                    <ul className="list-disc list-inside space-y-1">
+                        <li>Issues with URL shortening</li>
+                        <li>Feature requests</li>
+                        <li>Bug reports</li>
+                        <li>Business or partnership inquiries</li>
+                        <li>Complaints or general support</li>
+                    </ul>
+                </div>
+                
+                <div className="space-y-2">
+                    <h3 className="text-xl font-semibold text-foreground">About Our Team</h3>
+                    <p>
+                        TinyURL by All2ools is built and managed by developers focused on creating fast and free online tools for everyone.
+                    </p>
+                </div>
+                
+                <p className="pt-4 text-center text-sm">
+                    Your feedback helps us improve our tools every day — thank you for supporting All2ools!
+                </p>
+
             </CardContent>
         </Card>
     </main>
