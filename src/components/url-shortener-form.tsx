@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -38,7 +38,7 @@ const formSchema = z.object({
 export function UrlShortenerForm() {
   const [copied, setCopied] = useState(false);
   const initialState = { message: null, error: null, shortUrl: null };
-  const [state, formAction] = useFormState(shortenUrl, initialState);
+  const [state, formAction] = useActionState(shortenUrl, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
