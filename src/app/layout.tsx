@@ -3,6 +3,9 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { Icons } from '@/components/icons';
+import { Button } from '@/components/ui/button';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -55,8 +58,34 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('min-h-screen bg-background font-sans antialiased', inter.variable)}>
-        {children}
+      <body className={cn('flex min-h-screen flex-col bg-background font-sans antialiased', inter.variable)}>
+        <header className="container z-40 bg-background">
+          <div className="flex h-20 items-center justify-between py-6">
+            <Link href="/" className="flex items-center gap-2">
+              <Icons.logo className="h-8 w-8 text-primary" />
+              <span className="text-xl font-bold tracking-tight">TinyUrl</span>
+            </Link>
+            <nav>
+              <Button asChild>
+                <Link href="/dashboard">Dashboard</Link>
+              </Button>
+            </nav>
+          </div>
+        </header>
+        <main className="flex-1">{children}</main>
+        <footer className="border-t py-6 md:px-8 md:py-8">
+          <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-center text-sm text-muted-foreground">
+              © {new Date().getFullYear()} TinyUrl. A part of All2ools.com
+            </p>
+            <div className="flex items-center gap-4">
+               <Link href="/about" className="text-sm text-muted-foreground hover:text-primary">About Us</Link>
+               <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">Contact</Link>
+               <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">Privacy Policy</Link>
+               <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">Terms of Use</Link>
+            </div>
+          </div>
+        </footer>
         <Toaster />
       </body>
     </html>

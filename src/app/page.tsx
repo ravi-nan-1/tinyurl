@@ -1,7 +1,4 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { UrlShortenerForm } from '@/components/url-shortener-form';
-import { Icons } from '@/components/icons';
 import {
   Accordion,
   AccordionContent,
@@ -9,6 +6,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { CheckCircle, FileText, Image, MoreHorizontal } from 'lucide-react';
+import Link from 'next/link';
 
 const faqItems = {
   "General FAQ": [
@@ -36,234 +34,208 @@ const faqItems = {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="container z-40 bg-background">
-        <div className="flex h-20 items-center justify-between py-6">
-          <Link href="/" className="flex items-center gap-2">
-            <Icons.logo className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold tracking-tight">TinyUrl</span>
-          </Link>
-          <nav>
-            <Button asChild>
-              <Link href="/dashboard">Dashboard</Link>
-            </Button>
-          </nav>
+    <>
+      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-24">
+        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
+          <h1 className="font-headline text-3xl font-extrabold tracking-tighter sm:text-5xl lg:text-6xl">
+            Best URL Shortener Tool – Shorten, Track & Manage Links
+          </h1>
+          <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+            Our free URL shortener helps you create clean, simple, and trackable short URLs in one click. Whether you’re sharing links on social media, running ads, promoting products, or managing campaigns, our tool makes link management faster, easier, and more professional.
+          </p>
+          <div className="w-full max-w-2xl pt-8">
+            <UrlShortenerForm />
+          </div>
         </div>
-      </header>
-      <main className="flex-1">
-        <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-24">
-          <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-            <h1 className="font-headline text-3xl font-extrabold tracking-tighter sm:text-5xl lg:text-6xl">
-              Best URL Shortener Tool – Shorten, Track & Manage Links
-            </h1>
-            <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-              Our free URL shortener helps you create clean, simple, and trackable short URLs in one click. Whether you’re sharing links on social media, running ads, promoting products, or managing campaigns, our tool makes link management faster, easier, and more professional.
-            </p>
-            <div className="w-full max-w-2xl pt-8">
-              <UrlShortenerForm />
-            </div>
-          </div>
-        </section>
+      </section>
 
-        <section id="features" className="container space-y-12 bg-slate-50/50 py-8 md:py-12 lg:py-24 dark:bg-slate-800/20">
-            <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-              <h2 className="font-headline text-3xl font-bold leading-[1.1] tracking-tighter sm:text-3xl md:text-4xl">
-                Why Use Our URL Shortener?
-              </h2>
-              <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-                Each short URL comes with analytics, including click count, device type, browser, country, and referrer. You can also generate QR codes, create custom aliases, and monitor link performance. No login required — just shorten and share.
-              </p>
-            </div>
-            <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-              <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-                  <h3 className="font-bold">Create Short URLs in One Click</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Instantly create a short link with our fast, secure & reliable link shortener. Perfect for influencers, marketers & bloggers.
-                  </p>
-                </div>
-              </div>
-              <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-                  <h3 className="font-bold">Track Clicks & Analytics in Real Time</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Our URL shortener with analytics lets you track clicks on your URLs to understand user behavior.
-                  </p>
-                </div>
-              </div>
-              <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-                  <h3 className="font-bold">QR Code Generator for Every Short URL</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Automatically get a QR code for every short link, making it easy to share on posters, ads, and print media.
-                  </p>
-                </div>
-              </div>
-              <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-                  <h3 className="font-bold">Free Custom URL Shortening</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Create a custom alias or vanity URL to make your links branded and more trustworthy. A great TinyURL alternative.
-                  </p>
-                </div>
-              </div>
-              <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-                  <h3 className="font-bold">Short Links That Never Expire</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Our links are permanent, but you have the option to set an expiration date for time-sensitive campaigns.
-                  </p>
-                </div>
-              </div>
-              <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-                <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-                  <h3 className="font-bold">URL Monitoring & Spam Protection</h3>
-                  <p className="text-sm text-muted-foreground">
-                    We ensure every link is safe with automated spam protection and URL monitoring. A secure link reducer you can trust.
-                  </p>
-                </div>
-              </div>
-            </div>
-             <div className="mx-auto text-center md:max-w-[58rem]">
-              <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-                Perfect for marketers, influencers, businesses, and creators who want high-performing links that boost engagement and conversions. Our short links are safe, secure, and never expire.
-              </p>
-            </div>
-        </section>
-
-        <section id="use-cases" className="container space-y-6 py-8 md:py-12 lg:py-24">
+      <section id="features" className="container space-y-12 bg-slate-50/50 py-8 md:py-12 lg:py-24 dark:bg-slate-800/20">
           <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-            <h2 className="font-headline text-3xl font-bold leading-[1.1] sm:text-3xl md:text-4xl">
-              Who Will Use This Tool?
+            <h2 className="font-headline text-3xl font-bold leading-[1.1] tracking-tighter sm:text-3xl md:text-4xl">
+              Why Use Our URL Shortener?
             </h2>
             <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-             This URL Shortener is perfect for: Social media influencers, digital marketers, bloggers & content creators, businesses & startups, students & teachers, affiliate marketers, e-commerce sellers, developers & API users, WhatsApp/Instagram/Facebook marketers, YouTubers, and agency owners.
-            </p>
-          </div>
-
-          <div className="mx-auto grid gap-6 md:grid-cols-2 lg:max-w-[64rem] lg:grid-cols-2">
-              <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-                  <h3 className="mb-4 text-xl font-bold">Use Cases</h3>
-                  <ul className="space-y-3">
-                      <li className="flex items-start">
-                          <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                          <p className="text-muted-foreground">Shorten URLs for social media bios (Instagram, Twitter, TikTok).</p>
-                      </li>
-                      <li className="flex items-start">
-                          <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                          <p className="text-muted-foreground">Create clean links for marketing campaigns to boost CTR.</p>
-                      </li>
-                      <li className="flex items-start">
-                          <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                          <p className="text-muted-foreground">Track clicks to understand user behavior and campaign performance.</p>
-                      </li>
-                      <li className="flex items-start">
-                          <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                          <p className="text-muted-foreground">Generate QR codes for ads, posters, and business cards.</p>
-                      </li>
-                      <li className="flex items-start">
-                          <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                          <p className="text-muted-foreground">Hide long affiliate URLs to make them more shareable.</p>
-                      </li>
-                      <li className="flex items-start">
-                          <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                          <p className="text-muted-foreground">Share compact links on WhatsApp, Telegram, and in emails.</p>
-                      </li>
-                  </ul>
-              </div>
-              <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-                  <h3 className="mb-4 text-xl font-bold">How Our URL Shortener Works</h3>
-                   <ol className="list-inside list-decimal space-y-3 text-muted-foreground">
-                      <li>Paste your long URL into the input box.</li>
-                      <li>Optionally, create a custom alias for a branded short link.</li>
-                      <li>Click "Short Link" to generate your short URL and QR code.</li>
-                      <li>Copy your new short URL and share it anywhere.</li>
-                      <li>Track its performance in our analytics dashboard.</li>
-                  </ol>
-                  <p className="mt-4 text-sm text-muted-foreground">It's that simple! No registration needed for unlimited short links.</p>
-              </div>
-          </div>
-        </section>
-
-        <section id="faq" className="container py-8 md:py-12 lg:py-24">
-           <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-            <h2 className="font-headline text-3xl font-bold leading-[1.1] sm:text-3xl md:text-4xl">
-              Frequently Asked Questions
-            </h2>
-             <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-                Have questions? We've got answers. Here are some of the most common questions our users ask.
-             </p>
-          </div>
-          <div className="mx-auto mt-8 max-w-4xl">
-            <Accordion type="multiple" className="w-full">
-              {Object.entries(faqItems).map(([category, items]) => (
-                 <div key={category} className="mb-6">
-                    <h3 className="mb-4 text-2xl font-bold">{category}</h3>
-                    {items.map((item, index) => (
-                      <AccordionItem value={`${category}-${index}`} key={index}>
-                        <AccordionTrigger className="text-lg">{item.q}</AccordionTrigger>
-                        <AccordionContent className="text-base text-muted-foreground">
-                          {item.a}
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                 </div>
-              ))}
-            </Accordion>
-          </div>
-        </section>
-
-        <section id="related-tools" className="container space-y-12 bg-slate-50/50 py-8 dark:bg-slate-800/20 md:py-12 lg:py-24">
-          <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-            <h2 className="font-headline text-3xl font-bold leading-[1.1] sm:text-3xl md:text-4xl">
-              Related Tools
-            </h2>
-            <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-              To improve productivity, try our other free tools:
+              Each short URL comes with analytics, including click count, device type, browser, country, and referrer. You can also generate QR codes, create custom aliases, and monitor link performance. No login required — just shorten and share.
             </p>
           </div>
           <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-            <Link href="https://pdf2word.all2ools.com" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
-              <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
-                <FileText className="mx-auto h-12 w-12 text-primary" />
-                <h3 className="font-bold">PDF Splitter</h3>
+            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+                <h3 className="font-bold">Create Short URLs in One Click</h3>
                 <p className="text-sm text-muted-foreground">
-                  Split your PDF files into multiple documents.
+                  Instantly create a short link with our fast, secure & reliable link shortener. Perfect for influencers, marketers & bloggers.
                 </p>
               </div>
-            </Link>
-            <Link href="https://imagecompressor.all2ools.com" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
-              <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
-                <Image className="mx-auto h-12 w-12 text-primary" />
-                <h3 className="font-bold">Image Compressor</h3>
+            </div>
+            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+                <h3 className="font-bold">Track Clicks & Analytics in Real Time</h3>
                 <p className="text-sm text-muted-foreground">
-                  Reduce image file sizes for free.
+                  Our URL shortener with analytics lets you track clicks on your URLs to understand user behavior.
                 </p>
               </div>
-            </Link>
-            <Link href="https://all2ools.com" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
-              <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
-                <MoreHorizontal className="mx-auto h-12 w-12 text-primary" />
-                <h3 className="font-bold">More PDF Tools</h3>
+            </div>
+            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+                <h3 className="font-bold">QR Code Generator for Every Short URL</h3>
                 <p className="text-sm text-muted-foreground">
-                  Explore our full suite of online tools.
+                  Automatically get a QR code for every short link, making it easy to share on posters, ads, and print media.
                 </p>
               </div>
-            </Link>
+            </div>
+            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+                <h3 className="font-bold">Free Custom URL Shortening</h3>
+                <p className="text-sm text-muted-foreground">
+                  Create a custom alias or vanity URL to make your links branded and more trustworthy. A great TinyURL alternative.
+                </p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+                <h3 className="font-bold">Short Links That Never Expire</h3>
+                <p className="text-sm text-muted-foreground">
+                  Our links are permanent, but you have the option to set an expiration date for time-sensitive campaigns.
+                </p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-lg border bg-background p-2">
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+                <h3 className="font-bold">URL Monitoring & Spam Protection</h3>
+                <p className="text-sm text-muted-foreground">
+                  We ensure every link is safe with automated spam protection and URL monitoring. A secure link reducer you can trust.
+                </p>
+              </div>
+            </div>
           </div>
-        </section>
+           <div className="mx-auto text-center md:max-w-[58rem]">
+            <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+              Perfect for marketers, influencers, businesses, and creators who want high-performing links that boost engagement and conversions. Our short links are safe, secure, and never expire.
+            </p>
+          </div>
+      </section>
 
-      </main>
-      <footer className="py-6 md:px-8 md:py-0">
-        <div className="container flex flex-col items-center justify-center gap-4 md:h-24">
-          <p className="text-center text-sm text-muted-foreground">
-            © 2025 PDF2Word. A part of All2ools.com
-          </p>
-          <p className="text-balance text-center text-sm leading-loose text-muted-foreground">
-            Shorten your URLs instantly with our free URL shortening tool. Create branded short links, track clicks, generate QR codes, and manage campaigns — all in one place.
+      <section id="use-cases" className="container space-y-6 py-8 md:py-12 lg:py-24">
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <h2 className="font-headline text-3xl font-bold leading-[1.1] sm:text-3xl md:text-4xl">
+            Who Will Use This Tool?
+          </h2>
+          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+           This URL Shortener is perfect for: Social media influencers, digital marketers, bloggers & content creators, businesses & startups, students & teachers, affiliate marketers, e-commerce sellers, developers & API users, WhatsApp/Instagram/Facebook marketers, YouTubers, and agency owners.
           </p>
         </div>
-      </footer>
-    </div>
+
+        <div className="mx-auto grid gap-6 md:grid-cols-2 lg:max-w-[64rem] lg:grid-cols-2">
+            <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
+                <h3 className="mb-4 text-xl font-bold">Use Cases</h3>
+                <ul className="space-y-3">
+                    <li className="flex items-start">
+                        <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                        <p className="text-muted-foreground">Shorten URLs for social media bios (Instagram, Twitter, TikTok).</p>
+                    </li>
+                    <li className="flex items-start">
+                        <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                        <p className="text-muted-foreground">Create clean links for marketing campaigns to boost CTR.</p>
+                    </li>
+                    <li className="flex items-start">
+                        <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                        <p className="text-muted-foreground">Track clicks to understand user behavior and campaign performance.</p>
+                    </li>
+                    <li className="flex items-start">
+                        <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                        <p className="text-muted-foreground">Generate QR codes for ads, posters, and business cards.</p>
+                    </li>
+                    <li className="flex items-start">
+                        <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                        <p className="text-muted-foreground">Hide long affiliate URLs to make them more shareable.</p>
+                    </li>
+                    <li className="flex items-start">
+                        <CheckCircle className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                        <p className="text-muted-foreground">Share compact links on WhatsApp, Telegram, and in emails.</p>
+                    </li>
+                </ul>
+            </div>
+            <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
+                <h3 className="mb-4 text-xl font-bold">How Our URL Shortener Works</h3>
+                 <ol className="list-inside list-decimal space-y-3 text-muted-foreground">
+                    <li>Paste your long URL into the input box.</li>
+                    <li>Optionally, create a custom alias for a branded short link.</li>
+                    <li>Click "Short Link" to generate your short URL and QR code.</li>
+                    <li>Copy your new short URL and share it anywhere.</li>
+                    <li>Track its performance in our analytics dashboard.</li>
+                </ol>
+                <p className="mt-4 text-sm text-muted-foreground">It's that simple! No registration needed for unlimited short links.</p>
+            </div>
+        </div>
+      </section>
+
+      <section id="faq" className="container py-8 md:py-12 lg:py-24">
+         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <h2 className="font-headline text-3xl font-bold leading-[1.1] sm:text-3xl md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+              Have questions? We've got answers. Here are some of the most common questions our users ask.
+           </p>
+        </div>
+        <div className="mx-auto mt-8 max-w-4xl">
+          <Accordion type="multiple" className="w-full">
+            {Object.entries(faqItems).map(([category, items]) => (
+               <div key={category} className="mb-6">
+                  <h3 className="mb-4 text-2xl font-bold">{category}</h3>
+                  {items.map((item, index) => (
+                    <AccordionItem value={`${category}-${index}`} key={index}>
+                      <AccordionTrigger className="text-lg">{item.q}</AccordionTrigger>
+                      <AccordionContent className="text-base text-muted-foreground">
+                        {item.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+               </div>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      <section id="related-tools" className="container space-y-12 bg-slate-50/50 py-8 dark:bg-slate-800/20 md:py-12 lg:py-24">
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <h2 className="font-headline text-3xl font-bold leading-[1.1] sm:text-3xl md:text-4xl">
+            Related Tools
+          </h2>
+          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+            To improve productivity, try our other free tools:
+          </p>
+        </div>
+        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+          <Link href="https://pdf2word.all2ools.com" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
+            <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
+              <FileText className="mx-auto h-12 w-12 text-primary" />
+              <h3 className="font-bold">PDF Splitter</h3>
+              <p className="text-sm text-muted-foreground">
+                Split your PDF files into multiple documents.
+              </p>
+            </div>
+          </Link>
+          <Link href="https://imagecompressor.all2ools.com" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
+            <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
+              <Image className="mx-auto h-12 w-12 text-primary" />
+              <h3 className="font-bold">Image Compressor</h3>
+              <p className="text-sm text-muted-foreground">
+                Reduce image file sizes for free.
+              </p>
+            </div>
+          </Link>
+          <Link href="https://all2ools.com" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
+            <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
+              <MoreHorizontal className="mx-auto h-12 w-12 text-primary" />
+              <h3 className="font-bold">More PDF Tools</h3>
+              <p className="text-sm text-muted-foreground">
+                Explore our full suite of online tools.
+              </p>
+            </div>
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
