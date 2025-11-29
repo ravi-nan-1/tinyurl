@@ -41,7 +41,7 @@ export default function Home() {
         <div className="flex h-20 items-center justify-between py-6">
           <Link href="/" className="flex items-center gap-2">
             <Icons.logo className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold tracking-tight">LinkForge</span>
+            <span className="text-xl font-bold tracking-tight">TinyUrl</span>
           </Link>
           <nav>
             <Button asChild>

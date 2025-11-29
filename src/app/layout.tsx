@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
-const APP_NAME = 'LinkForge';
+const APP_NAME = 'TinyUrl';
 const APP_DESCRIPTION = 'Shorten long links fast with our secure URL shortener. Track clicks, generate QR codes, and manage URLs easily. 100% free.';
 
 export const metadata: Metadata = {
