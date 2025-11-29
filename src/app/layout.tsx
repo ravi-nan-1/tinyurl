@@ -65,7 +65,11 @@ export default function RootLayout({
               <Icons.logo className="h-8 w-8 text-primary" />
               <span className="text-xl font-bold tracking-tight">TinyUrl</span>
             </Link>
-            <nav>
+            <nav className="flex items-center gap-4">
+               <Link href="/about" className="text-sm font-medium text-muted-foreground hover:text-primary">About</Link>
+               <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-primary">Contact</Link>
+               <Link href="/privacy" className="text-sm font-medium text-muted-foreground hover:text-primary">Privacy</Link>
+               <Link href="/terms" className="text-sm font-medium text-muted-foreground hover:text-primary">Terms</Link>
               <Button asChild>
                 <Link href="/dashboard">Dashboard</Link>
               </Button>
