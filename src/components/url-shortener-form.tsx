@@ -1,10 +1,9 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useEffect, useRef, useState } from 'react';
 import { shortenUrl } from '@/lib/actions';
 import {
   Form,
@@ -28,6 +27,13 @@ import { format } from 'date-fns';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { QRCodeSVG } from 'qrcode.react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 const formSchema = z.object({
   url: z.string().url({ message: 'Please enter a valid URL.' }),
@@ -187,9 +193,23 @@ export function UrlShortenerForm() {
                     </Button>
                 </div>
             </div>
-            <div className="rounded-lg bg-white p-2">
-                <QRCodeSVG value={`http://${state.shortUrl}`} size={80} />
-            </div>
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="cursor-pointer rounded-lg bg-white p-2">
+                  <QRCodeSVG value={`http://${state.shortUrl}`} size={80} />
+                </div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>QR Code for {state.shortUrl}</DialogTitle>
+                </DialogHeader>
+                <div className="mt-4 flex items-center justify-center">
+                  <div className="rounded-lg bg-white p-4">
+                    <QRCodeSVG value={`http://${state.shortUrl}`} size={256} />
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </AlertDescription>
         </Alert>
       )}
