@@ -223,7 +223,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-            <Link href="#" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
+            <Link href="https://pdf2word.all2ools.com" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
               <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
                 <FileText className="mx-auto h-12 w-12 text-primary" />
                 <h3 className="font-bold">PDF Splitter</h3>
@@ -232,7 +232,7 @@ export default function Home() {
                 </p>
               </div>
             </Link>
-            <Link href="#" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
+            <Link href="https://imagecompressor.all2ools.com" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
               <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
                 <Image className="mx-auto h-12 w-12 text-primary" />
                 <h3 className="font-bold">Image Compressor</h3>
@@ -241,7 +241,7 @@ export default function Home() {
                 </p>
               </div>
             </Link>
-            <Link href="#" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
+            <Link href="https://all2ools.com" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-lg border bg-background p-2 transition-transform hover:scale-105">
               <div className="flex h-[180px] flex-col justify-between rounded-md p-6 text-center">
                 <MoreHorizontal className="mx-auto h-12 w-12 text-primary" />
                 <h3 className="font-bold">More PDF Tools</h3>
