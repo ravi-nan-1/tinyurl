@@ -160,7 +160,7 @@ export function UrlShortenerForm() {
             />
           </div>
           <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? 'Forging...' : 'Forge Link'}
+            {form.formState.isSubmitting ? 'Shortening...' : 'Short Link'}
           </Button>
           {state?.error && !state.error.alias && (
              <FormMessage>{Object.values(state.error).join(', ')}</FormMessage>
